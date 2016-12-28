@@ -1,0 +1,20 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+    <servlet>
+        <servlet-name>helloServlet</servlet-name>
+        <servlet-class>com.wrox.HelloServlet</servlet-class>
+        <!--load-on-startup表示在启动web容器时就会初始Servlet的init方法，1表示第一个被启动-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>helloServlet</servlet-name>
+        <url-pattern>/greeting</url-pattern>
+    </servlet-mapping>
+
+</web-app>
