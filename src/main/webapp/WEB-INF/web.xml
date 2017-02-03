@@ -1,20 +1,60 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+    <display-name>Archetype Created Web Application</display-name>
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <url-pattern>*.jspf</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+            <scripting-invalid>false</scripting-invalid>
+            <include-prelude>/WEB-INF/jsp/base.jspf</include-prelude>
+            <trim-directive-whitespaces>true</trim-directive-whitespaces>
+            <default-content-type>text/html</default-content-type>
+        </jsp-property-group>
+    </jsp-config>
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+    <!--<servlet>-->
+    <!--<servlet-name>helloServlet</servlet-name>-->
+    <!--<servlet-class>com.wrox.chapter03.HelloServlet</servlet-class>-->
+    <!--&lt;!&ndash;load-on-startup表示在启动web容器时就会初始Servlet的init方法，1表示第一个被启动&ndash;&gt;-->
+    <!--<load-on-startup>1</load-on-startup>-->
+    <!--</servlet>-->
 
+    <!--<servlet-mapping>-->
+    <!--<servlet-name>helloServlet</servlet-name>-->
+    <!--<url-pattern>/greeting</url-pattern>-->
+    <!--</servlet-mapping>-->
     <servlet>
-        <servlet-name>helloServlet</servlet-name>
-        <servlet-class>com.wrox.HelloServlet</servlet-class>
-        <!--load-on-startup表示在启动web容器时就会初始Servlet的init方法，1表示第一个被启动-->
-        <load-on-startup>1</load-on-startup>
+        <servlet-name>servletParam</servlet-name>
+        <servlet-class>com.wrox.chapter03.ServletParam</servlet-class>
+        <init-param>
+            <param-name>testParam</param-name>
+            <param-value>hello,wushaonan!!!</param-value>
+        </init-param>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>helloServlet</servlet-name>
-        <url-pattern>/greeting</url-pattern>
+        <servlet-name>servletParam</servlet-name>
+        <url-pattern>/servletparam</url-pattern>
     </servlet-mapping>
+    <!--这是全局的变量，任何servlet都可以使用-->
+    <context-param>
+        <param-name>paramOne</param-name>
+        <param-value>Hello,</param-value>
+    </context-param>
+    <context-param>
+        <param-name>paramTwo</param-name>
+        <param-value>Shane!!!</param-value>
+    </context-param>
 
 </web-app>
